@@ -10,24 +10,24 @@ const alpaca = new Alpaca({
 	usePolygon: false,
 });
 
-alpaca.getCalendar({ start: date, end: date }).then((res) => {
-	console.log(res);
-});
-
-// alpaca.getAccount().then((account) => {
-// 	console.log('Current Account:', account);
+// alpaca.getCalendar({ start: date, end: date }).then((res) => {
+// 	console.log(res);
 // });
 
-// function addTicker(symbol) {
-// 	let accountId;
+alpaca.getAccount().then((account) => {
+	console.log('Current Account:', account);
+});
 
-// 	alpaca.getWatchlists(symbol).then((response) => {
-// 		accountId = response[0].id;
+function addTicker(symbol) {
+	let accountId;
 
-// 		if (symbol) {
-// 			alpaca.addToWatchlist(accountId, symbol);
-// 		}
-// 	});
-// }
+	alpaca.getWatchlists(symbol).then((response) => {
+		accountId = response[0].id;
 
-// addTicker('F');
+		if (symbol) {
+			alpaca.addToWatchlist(accountId, symbol);
+		}
+	});
+}
+
+addTicker('AAPL');
